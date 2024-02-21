@@ -1,0 +1,15 @@
+- name: Run updates
+  become: yes
+  block:
+    - name: Run system updates
+      ansible.builtin.apt:
+        upgrade: dist
+        update_cache: yes
+        autoremove: yes
+    - name: Check if reboot required 
+      ansible.builtin.stat:
+        path: /var/run/reboot-required
+      register: reboot_flag_file
+    - name: Reboot system
+      when: reboot_flag_file.stat.exists
+      ansible.builtin.reboot:

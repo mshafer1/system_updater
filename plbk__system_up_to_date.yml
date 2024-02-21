@@ -1,0 +1,4 @@
+- name: System up to date
+  hosts: localhost
+  roles:
+  - role: system_up_to_date
