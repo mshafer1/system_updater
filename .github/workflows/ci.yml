@@ -18,7 +18,7 @@ jobs:
 
       - uses: actions/checkout@v3
         with:
-          repository: https://github.com/mshafer1/ansible-configs.git
+          repository: mshafer1/ansible-configs.git
           ref: main
           sparse-checkout: playbooks/roles/system_up_to_date
           sparse-checkout-cone-mode: false
