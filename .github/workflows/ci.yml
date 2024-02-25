@@ -16,15 +16,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/checkout@v3
-        with:
-          repository: mshafer1/ansible-configs.git
-          ref: main
-          sparse-checkout: playbooks/roles/system_up_to_date
-          sparse-checkout-cone-mode: false
+      - name: Copy ansible-configs repo
+        run: |
+          git clone https://github.com/mshafer1/ansible-configs.git /tmp/ansible-configs
           
       - name: Move role to correct folder
         run: |
           rm -rf ./roles/system_up_to_date
-          mv ./playbooks/roles/system_up_to_date ./roles/
+          mv /tmp/asnible-configs/playbooks/roles/system_up_to_date ./roles/
           tree
