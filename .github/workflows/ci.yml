@@ -16,12 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Copy ansible-configs repo
-        run: |
-          git clone https://github.com/mshafer1/ansible-configs.git /tmp/ansible-configs
-          
       - name: Move role to correct folder
         run: |
+          git clone https://github.com/mshafer1/ansible-configs.git /tmp/ansible-configs
           rm -rf ./roles/system_up_to_date
           mv /tmp/ansible-configs/playbooks/roles/system_up_to_date ./roles/
           tree
