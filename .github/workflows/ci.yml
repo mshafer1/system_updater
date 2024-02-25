@@ -5,8 +5,8 @@ on:
     paths-ignore:
       - roles/**
   workflow_dispatch:
-  schedule:
-      - cron: '30 1 * * *'
+  # schedule: - gonna try using github rest api to triggero on upstream changes
+  #     - cron: '30 1 * * *'
 
 jobs:
   fetch_role:
