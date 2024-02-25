@@ -23,5 +23,5 @@ jobs:
       - name: Move role to correct folder
         run: |
           rm -rf ./roles/system_up_to_date
-          mv /tmp/asnible-configs/playbooks/roles/system_up_to_date ./roles/
+          mv /tmp/ansible-configs/playbooks/roles/system_up_to_date ./roles/
           tree
