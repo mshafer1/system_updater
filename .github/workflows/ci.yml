@@ -23,3 +23,12 @@ jobs:
           rm -rf ./roles/system_up_to_date
           mv /tmp/ansible-configs/playbooks/roles/system_up_to_date ./roles/
           tree
+      - name: GIT commit and push all changed files
+        env: 
+          CI_COMMIT_MESSAGE: Update data file(s)
+          CI_COMMIT_AUTHOR: Continuous Integration
+        run: |
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "username@users.noreply.github.com"
+          git commit -am "Update system update role from mshafer1/ansible-configs - ${{ github.sha }}" || exit 0
+          git push
