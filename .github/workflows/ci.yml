@@ -1,0 +1,30 @@
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - roles/**
+  workflow_dispatch:
+  schedule:
+      - cron: '30 1 * * *'
+
+jobs:
+  fetch_role:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/checkout@v3
+        with:
+          repository: https://github.com/mshafer1/ansible-configs.git
+          ref: main
+          sparse-checkout: playbooks/roles/system_up_to_date
+          sparse-checkout-cone-mode: false
+          
+      - name: Move role to correct folder
+        run: |
+          rm -rf ./roles/system_up_to_date
+          mv ./playbooks/roles/system_up_to_date ./roles/
+          tree
