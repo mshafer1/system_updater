@@ -2,3 +2,5 @@
   hosts: localhost
   roles:
   - role: system_up_to_date
+    sub_task: sync_repo
+  - role: system_up_to_date
