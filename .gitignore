@@ -1,3 +1,4 @@
 vars/
+!roles/*/vars/
 .vscode/
 objects/
